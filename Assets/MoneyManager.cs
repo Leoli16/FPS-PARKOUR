@@ -7,6 +7,7 @@ public class MoneyManager : MonoBehaviour
 {
     public float money;
     public TextMeshProUGUI TxtMoney;
+    private ui_man ui_Man;
 
     public bool UpdateMoney(float amount)
     {
@@ -18,13 +19,14 @@ public class MoneyManager : MonoBehaviour
         else
         {
             money += amount;
-            TxtMoney.text = "$"+money.ToString();
+            ui_Man.updateMoneyUI(money.ToString());
             return true;
         }
     }
 
     void Start()
     {
+        ui_Man = FindObjectOfType<ui_man>();
         UpdateMoney(0);
     }
 }
